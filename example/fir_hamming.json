@@ -1,0 +1,6 @@
+{
+  "kind": "fir",
+  "order": 30,
+  "cutoff": 0.2,
+  "window": "hamming"
+}

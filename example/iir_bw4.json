@@ -1,0 +1,5 @@
+{
+  "kind": "iir",
+  "order": 4,
+  "cutoff": 0.2
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dsp-filter · 数字滤波器设计</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>dsp-filter</h1>
+  <p>FIR / IIR 设计、幅频相频、零极点</p>
+</header>
+<main>
+  <section class="panel">
+    <div class="row">
+      <label>示例</label>
+      <select id="example"></select>
+      <button id="load">加载示例</button>
+    </div>
+    <div class="row">
+      <label>类型</label>
+      <select id="kind">
+        <option value="fir">FIR 窗函数法</option>
+        <option value="iir">IIR Butterworth</option>
+      </select>
+      <label class="inline">阶数</label>
+      <input id="order" type="number" value="30" min="1" max="16">
+      <label class="inline">截止 fc</label>
+      <input id="cutoff" type="number" value="0.2" min="0" max="0.5" step="0.01">
+      <label class="inline">窗</label>
+      <select id="window">
+        <option value="rect">rect</option>
+        <option value="hann">hann</option>
+        <option value="hamming" selected>hamming</option>
+      </select>
+      <button id="design" class="primary">设计</button>
+    </div>
+    <div id="error" class="error hidden"></div>
+  </section>
+
+  <section class="panel">
+    <h2>系数</h2>
+    <div id="coeff" class="coeff"></div>
+    <div id="zp" class="zp"></div>
+  </section>
+
+  <section class="panel">
+    <h2>幅频响应（dB）</h2>
+    <canvas id="curve"></canvas>
+    <div id="legend" class="legend"></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

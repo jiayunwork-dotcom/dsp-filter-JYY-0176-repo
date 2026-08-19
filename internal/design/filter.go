@@ -1,12 +1,9 @@
 package design
 
-import (
-	"fmt"
-	"math"
-)
+import "math"
 
 type Filter struct {
-	Kind Kind      `json:"kind"`
+	Kind Kind    `json:"kind"`
 	B    []float64 `json:"b"`
 	A    []float64 `json:"a"`
 }
@@ -16,13 +13,13 @@ func Design(spec *DesignSpec) (*Filter, error) {
 	case KindFIR:
 		b, err := DesignFIR(spec)
 		if err != nil {
-			return nil, fmt.Errorf("design: %v", err)
+			return nil, err
 		}
 		return &Filter{Kind: KindFIR, B: b, A: []float64{1}}, nil
 	case KindIIR:
 		b, a, err := DesignIIR(spec)
 		if err != nil {
-			return nil, fmt.Errorf("design: %v", err)
+			return nil, err
 		}
 		return &Filter{Kind: KindIIR, B: b, A: a}, nil
 	}

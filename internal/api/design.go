@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"dsp-filter/internal/design"
@@ -33,8 +32,7 @@ func (s *Server) handleDesign(w http.ResponseWriter, r *http.Request) {
 	}
 	f, err := design.Design(spec)
 	if err != nil {
-		stripped := fmt.Errorf("%v", err)
-		writeErr(w, statusOf(stripped), codeOf(stripped), err.Error())
+		writeErr(w, statusOf(err), codeOf(err), err.Error())
 		return
 	}
 	writeJSON(w, http.StatusOK, f)
